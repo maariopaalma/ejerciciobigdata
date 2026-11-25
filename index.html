@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Désiré Doué · Perfil interactivo</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f5f6fa;--card:#fff;--ink:#0b1630;--mut:#55607a;--acc:#004170;--acc2:#da291c;--line:#d9dde8}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070d1f;--card:#101a36;--ink:#eef1fa;--mut:#9aa6c4;--acc:#5aa9ff;--acc2:#ff5a4d;--line:#25335c}}
+:root[data-theme="dark"]{--bg:#070d1f;--card:#101a36;--ink:#eef1fa;--mut:#9aa6c4;--acc:#5aa9ff;--acc2:#ff5a4d;--line:#25335c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,serif;line-height:1.6}
+h1,h2,h3,button,nav,.sans{font-family:'Helvetica Neue',Arial,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding:8px 12px;align-items:center}
+nav a{color:var(--ink);text-decoration:none;font-size:.85rem;padding:6px 12px;border-radius:99px;white-space:nowrap}
+nav a:hover{background:var(--line)}
+nav button{margin-left:auto}
+button{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:7px 14px;font-size:.85rem}
+button:hover,button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+header{background:linear-gradient(135deg,#001f3f,#004170 60%,#da291c);color:#fff;padding:44px 0 36px}
+.hero{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.hero svg{width:180px;height:216px;flex:none;transition:transform .4s}
+.hero svg:hover{transform:rotate(-4deg) scale(1.05)}
+.hero h1{font-size:clamp(2.2rem,7vw,3.6rem);margin:0;line-height:1.05}
+.hero p{margin:10px 0 0;opacity:.9;max-width:480px}
+.tag{display:inline-block;font:600 .72rem Arial;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.16);padding:6px 10px;border-radius:99px;margin-bottom:12px}
+section{padding:38px 0 6px}
+h2{font-size:1.55rem;margin:0 0 16px;border-left:5px solid var(--acc2);padding-left:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.fact b{display:block;font:700 1.5rem Arial;color:var(--acc)}
+.fact span{font:.8rem Arial;color:var(--mut)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.timeline{padding-left:30px;border-left:3px solid var(--line)}
+.ev{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:14px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.ev:hover{transform:translateX(4px);box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.ev::before{content:"";position:absolute;left:-41px;top:16px;width:16px;height:16px;border-radius:50%;background:var(--acc);border:3px solid var(--bg)}
+.ev.t::before{background:var(--acc2)}
+.ev time{font:700 .78rem Arial;color:var(--acc2)}
+.ev h3{margin:2px 0;font-size:1.05rem}
+.ev p{margin:6px 0 0;color:var(--mut);font-size:.93rem;display:none}
+.ev.open p{display:block}
+.ev.hide{display:none}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.slot{background:var(--card);border:2px dashed var(--line);border-radius:12px;overflow:hidden}
+.slot .box{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;cursor:pointer;color:var(--mut);font:.85rem Arial;text-align:center;padding:10px}
+.slot img{width:100%;height:100%;object-fit:cover;display:block}
+.slot .box.has{padding:0}
+.slot figcaption{padding:8px 12px;font:.8rem Arial;color:var(--mut);display:flex;justify-content:space-between;gap:8px}
+.slot figcaption a{color:var(--acc2);cursor:pointer}
+.note{font:.85rem Arial;color:var(--mut);margin:0 0 14px}
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.quiz h3{margin:0 0 12px}
+.opts{display:grid;gap:8px}
+.opts button{text-align:left;border-radius:10px}
+.opts button.ok{background:#1b9c4f;color:#fff;border-color:#1b9c4f}
+.opts button.ko{background:#c0392b;color:#fff;border-color:#c0392b}
+.bar{height:6px;background:var(--line);border-radius:9px;margin-bottom:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc2);width:0;transition:width .3s}
+.tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tabpane{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:none}
+.tabpane.on{display:block}
+.honors{display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none}
+.honors li{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font:.88rem Arial;transition:transform .2s}
+.honors li:hover{transform:translateY(-3px)}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+#lb.on{display:flex}#lb img{max-width:100%;max-height:100%;border-radius:8px}
+footer{padding:30px 0 40px;color:var(--mut);font:.8rem Arial}
+</style>
+</head>
+<body>
+<nav><a href="#ficha">Ficha</a><a href="#historia">Historia</a><a href="#cronologia">Cronología</a><a href="#fotos">Fotos</a><a href="#datos">Datos</a><a href="#quiz">Quiz</a><button id="th" aria-label="Cambiar tema">🌓</button></nav>
+<header><div class="wrap hero">
+<svg viewBox="0 0 200 240" role="img" aria-label="Camiseta 14">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#001f3f"/><stop offset="1" stop-color="#004170"/></linearGradient></defs>
+<path d="M60 10l-50 40 25 40 25-15v155h80V75l25 15 25-40-50-40q-20 20-40 20T60 10z" fill="url(#g)" stroke="#fff" stroke-width="3"/>
+<rect x="88" y="30" width="24" height="170" fill="#da291c" opacity=".9"/>
+<text x="100" y="150" text-anchor="middle" font-family="Arial" font-weight="900" font-size="64" fill="#fff">14</text>
+<text x="100" y="105" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#fff" letter-spacing="2">DOUÉ</text></svg>
+<div><span class="tag">Paris Saint-Germain · Francia</span><h1>Désiré Doué</h1>
+<p>Mediapunta y extremo polivalente. De la cantera del Stade Rennais a dos Champions League consecutivas con el PSG.</p></div>
+</div></header>
+
+<main class="wrap">
+<section id="ficha"><h2>Ficha</h2>
+<div class="grid">
+<div class="fact"><b id="age">–</b><span>Edad (calculada hoy)</span></div>
+<div class="fact"><b>3 jun 2005</b><span>Nacimiento · Angers</span></div>
+<div class="fact"><b>181 cm</b><span>Altura</span></div>
+<div class="fact"><b>Derecho</b><span>Pie preferido</span></div>
+<div class="fact"><b>Nº 14</b><span>Dorsal en el PSG</span></div>
+<div class="fact"><b>2029</b><span>Fin de contrato</span></div>
+</div></section>
+
+<section id="historia"><h2>Su historia</h2>
+<div class="tabs" id="htabs"></div>
+<div id="hpanes"></div></section>
+
+<section id="cronologia"><h2>Línea cronológica</h2>
+<div class="filters" id="filters"></div>
+<p class="note">Toca cada hito para ver el detalle.</p>
+<div class="timeline" id="tl"></div></section>
+
+<section id="fotos"><h2>Fotos</h2>
+<p class="note">No puedo incluir fotografías reales de terceros en la página, pero cada hueco te permite subir las tuyas (de su infancia en Rennes, su debut, el PSG…). Tócalo para elegir una imagen; toca la foto para verla en grande. Se guardan solo en tu navegador.</p>
+<div class="photos" id="photos"></div></section>
+
+<section id="datos"><h2>Datos clave</h2>
+<div class="grid" style="margin-bottom:18px">
+<div class="fact"><b class="cnt" data-n="2">0</b><span>Champions League</span></div>
+<div class="fact"><b class="cnt" data-n="2">0</b><span>Goles en la final de 2025</span></div>
+<div class="fact"><b class="cnt" data-n="5">0</b><span>Años de contrato inicial</span></div>
+<div class="fact"><b class="cnt" data-n="14">0</b><span>Dorsal</span></div>
+</div>
+<ul class="honors"><li>🏆 2 × Champions League (2025, 2026)</li><li>⭐ Golden Boy 2025</li><li>🥈 Plata olímpica París 2024</li><li>🇫🇷 Euro sub-17 2022</li><li>🌍 Mejor joven del Mundial de Clubes 2025</li><li>🎖️ Mejor joven de la Ligue 1 (2 años)</li></ul></section>
+
+<section id="quiz"><h2>¿Cuánto sabes de Doué?</h2><div class="quiz" id="qz"></div></section>
+</main>
+<div id="lb"><img alt=""></div>
+<footer><div class="wrap">Datos de fuentes públicas (PSG, Ligue 1, ESPN, FotMob, prensa) a octubre de 2026. Las ilustraciones son gráficos, no fotografías.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+// edad
+(function(){const b=new Date(2005,5,3),n=new Date();let a=n.getFullYear()-2005;if(n<new Date(n.getFullYear(),5,3))a--;$('#age').textContent=a+' años'})();
+// tema
+$('#th').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+// historia
+const H=[["Orígenes","Nacido en Angers, Doué hizo toda su formación en el Stade Rennais. Pasó por el filial, Rennes B, antes de dar el salto al primer equipo."],
+["Rennes","Debutó como profesional en agosto de 2022. Su regate, su velocidad y su polivalencia lo convirtieron en una de las grandes promesas de la Ligue 1."],
+["PSG","En agosto de 2024 fichó por el PSG con contrato de cinco años. Tras un periodo de adaptación con Luis Enrique, explotó en 2024-25 con una final de Champions memorable ante el Inter (5-0): dos goles y una asistencia."],
+["Francia","Campeón de Europa sub-17 (2022), plata en los Juegos de París 2024, debut con la absoluta en marzo de 2025 y gol ante Noruega (4-1) en el Mundial 2026."]];
+H.forEach((h,i)=>{const b=document.createElement('button');b.textContent=h[0];b.onclick=()=>sel(i);$('#htabs').append(b);const p=document.createElement('div');p.className='tabpane';p.textContent=h[1];$('#hpanes').append(p)});
+function sel(i){document.querySelectorAll('#htabs button').forEach((b,j)=>b.classList.toggle('on',i===j));document.querySelectorAll('.tabpane').forEach((p,j)=>p.classList.toggle('on',i===j))}sel(0);
+// cronología
+const E=[["Hasta 2022","c","Cantera del Stade Rennais","Formación completa en Rennes, con paso por el filial Rennes B."],
+["2022","s","Campeón de Europa sub-17","Primer título internacional con Francia en categorías inferiores."],
+["Agosto 2022","c","Debut profesional con el Rennes","Dos temporadas en Ligue 1 que lo pusieron en el radar de los grandes de Europa."],
+["2023-24","s","Sub-21 y sub-23 de Francia","Escala por las categorías juveniles hasta llegar al equipo olímpico."],
+["Verano 2024","s","Plata en los Juegos de París","Medalla de plata con Francia, con un gol en el torneo."],
+["Agosto 2024","c","Ficha por el PSG","Contrato de cinco años; competiría con Barcola en la izquierda y como mediapunta."],
+["Marzo 2025","s","Debut con Francia absoluta","Da el salto a la selección de Deschamps."],
+["31 mayo 2025","t","Final Champions: PSG 5-0 Inter","Doblete, asistencia y MVP de la final. Mejor joven de la temporada para la UEFA."],
+["2025","t","Golden Boy","Reconocido como el mejor joven del fútbol europeo."],
+["30 mayo 2026","t","Segunda Champions seguida","Titular ante el Arsenal (1-1, 4-3 en penaltis)."],
+["Verano 2026","s","Mundial con Francia","Gol ante Noruega en la victoria por 4-1."],
+["Sept. 2026","c","Presente","Inicio de curso irregular; el PSG ha abierto conversaciones para ampliar su contrato."]];
+const F=[["all","Todo"],["c","Clubes"],["s","Selección"],["t","Títulos"]];
+F.forEach(([k,l],i)=>{const b=document.createElement('button');b.textContent=l;if(!i)b.className='on';b.onclick=()=>{document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.querySelectorAll('.ev').forEach(e=>e.classList.toggle('hide',k!=='all'&&e.dataset.k!==k))};$('#filters').append(b)});
+E.forEach(e=>{const d=document.createElement('div');d.className='ev'+(e[1]==='t'?' t':'');d.dataset.k=e[1];d.innerHTML='<time>'+e[0]+'</time><h3>'+e[2]+'</h3><p>'+e[3]+'</p>';d.onclick=()=>d.classList.toggle('open');$('#tl').append(d)});
+// fotos
+const S=[["Infancia y primeros años"],["Cantera del Rennes"],["Debut en 2022"],["Llegada al PSG, 2024"],["Champions 2025 / 2026"],["Con la selección francesa"]];
+const mem={};
+S.forEach((s,i)=>{const f=document.createElement('figure');f.className='slot';f.style.margin=0;
+ f.innerHTML='<div class="box"><span style="font-size:1.8rem">📷</span>Subir foto</div><figcaption><span>'+s[0]+'</span><a hidden>Quitar</a></figcaption>';
+ const box=f.querySelector('.box'),rm=f.querySelector('a'),inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+ function show(u){box.innerHTML='';const im=new Image();im.src=u;im.alt=s[0];box.append(im);box.classList.add('has');rm.hidden=false;mem[i]=u}
+ try{const u=localStorage.getItem('dd_p'+i);if(u)show(u)}catch(e){}
+ box.onclick=()=>{if(mem[i]){$('#lb img').src=mem[i];$('#lb').classList.add('on')}else inp.click()};
+ inp.onchange=()=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,700/im.width);c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);const u=c.toDataURL('image/jpeg',.8);show(u);try{localStorage.setItem('dd_p'+i,u)}catch(e){}};im.src=r.result};if(inp.files[0])r.readAsDataURL(inp.files[0])};
+ rm.onclick=()=>{delete mem[i];try{localStorage.removeItem('dd_p'+i)}catch(e){}box.classList.remove('has');box.innerHTML='<span style="font-size:1.8rem">📷</span>Subir foto';rm.hidden=true};
+ $('#photos').append(f)});
+$('#lb').onclick=()=>$('#lb').classList.remove('on');
+// contadores
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const n=+e.target.dataset.n;let v=0;const t=setInterval(()=>{e.target.textContent=++v;if(v>=n)clearInterval(t)},700/n)}));
+document.querySelectorAll('.cnt').forEach(c=>io.observe(c));
+// quiz
+const Q=[["¿En qué ciudad nació Doué?",["París","Angers","Rennes"],1],
+["¿Contra qué equipo marcó dos goles en la final de la Champions 2025?",["Arsenal","Bayern","Inter"],2],
+["¿Qué dorsal lleva en el PSG?",["10","14","7"],1],
+["¿Qué medalla ganó en los Juegos de París 2024?",["Plata","Oro","Bronce"],0],
+["¿Contra quién ganó su segunda Champions (2026)?",["Arsenal","Inter","Real Madrid"],0]];
+let qi=0,sc=0;
+function rq(){const z=$('#qz');if(qi>=Q.length){z.innerHTML='<h3>Resultado: '+sc+' / '+Q.length+'</h3><p>'+(sc>=4?'¡Eres un auténtico experto!':'Repasa la cronología y vuelve a intentarlo.')+'</p>';const b=document.createElement('button');b.textContent='Reiniciar';b.onclick=()=>{qi=0;sc=0;rq()};z.append(b);return}
+ const q=Q[qi];z.innerHTML='<div class="bar"><i style="width:'+qi/Q.length*100+'%"></i></div><h3>'+q[0]+'</h3><div class="opts"></div>';
+ q[1].forEach((o,i)=>{const b=document.createElement('button');b.textContent=o;b.onclick=()=>{z.querySelectorAll('.opts button').forEach((x,j)=>{x.disabled=true;if(j===q[2])x.classList.add('ok')});if(i===q[2])sc++;else b.classList.add('ko');setTimeout(()=>{qi++;rq()},1100)};z.querySelector('.opts').append(b)})}
+rq();
+</script>
+</body>
+</html>
